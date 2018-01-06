@@ -1,0 +1,11 @@
+.stockTradeCell {
+  padding: 2px;
+}
+
+.buyTradeType {
+  color: green;
+}
+
+.sellTradeType {
+  color: red;
+}
