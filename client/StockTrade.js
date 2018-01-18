@@ -3,7 +3,9 @@ import './StockTrade.css';
 
 export default class StockTrade extends Component {
 
-  delete = () => this.props.deleteTrade(this.props.index);
+  delete() {
+    this.props.deleteTradeFunc(this.props.index);
+  }
 
   render() {
     return (
@@ -16,7 +18,7 @@ export default class StockTrade extends Component {
           <span>{`${this.props.volume} shares of ${this.props.symbol} on ${new Date(this.props.date).toDateString()} at $${this.props.price}`}</span>
         </td>
         <td className='stockTradeCell'>
-          <button onClick={this.delete}>Remove</button>
+          <button onClick={this.delete.bind(this)}>Remove</button>
         </td>
       </tr>
     )

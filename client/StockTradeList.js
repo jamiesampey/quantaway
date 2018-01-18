@@ -12,7 +12,7 @@ export default class StockTradeList extends Component {
     });
   };
 
-  removeTrade = (idx) => {
+  removeTrade(idx) {
     let arr = this.state.stockTrades;
     arr.splice(idx, 1);
     this.setState({
@@ -27,7 +27,7 @@ export default class StockTradeList extends Component {
           {
             this.state.stockTrades.map((item, i) => {
               return (
-                <StockTrade key={i} index={i} type={item.type} date={item.date} symbol={item.symbol} volume={item.volume} price={item.price} deleteTrade={this.removeTrade}/>
+                <StockTrade key={i} index={i} type={item.type} date={item.date} symbol={item.symbol} volume={item.volume} price={item.price} deleteTradeFunc={this.removeTrade.bind(this)}/>
               )
             })
           }

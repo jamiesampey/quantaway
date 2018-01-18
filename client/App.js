@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import StockTradeList from "../../client/src/StockTradeList";
+import StockTradeList from "./StockTradeList";
 
 export default class App extends Component {
 
