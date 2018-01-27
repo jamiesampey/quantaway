@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './StockTrade.css';
 
 export default class StockTrade extends Component {
@@ -10,7 +11,9 @@ export default class StockTrade extends Component {
   render() {
     return (
       <tr>
-        <td className='stockTradeCell'><span>{this.props.index + 1}.</span></td>
+        <td className='stockTradeCell'>
+          <Link to={`/positions/${this.props.symbol}`}>{this.props.symbol}:</Link>
+        </td>
         <td className={`stockTradeCell ${this.props.type === TradeType.BUY ? 'buyTradeType' : 'sellTradeType'}`}>
           <span>{this.props.type}</span>
         </td>

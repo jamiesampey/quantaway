@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import StockTrade from "./StockTrade";
 
-export default class StockTradeList extends Component {
+export default class AllPositions extends Component {
+
   componentWillMount() {
-    this.setState({stockTrades: []})
+    this.setState({trades: []});
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      stockTrades: nextProps.trades
-    });
-  };
+  componentDidMount() {
+    fetch('/trades')
+      .then(res => res.json())
+      .then(trades => {
+        this.setState({trades: trades});
+      });
+  }
 
   removeTrade(idx) {
-    let arr = this.state.stockTrades;
+    let arr = this.state.trades;
     arr.splice(idx, 1);
     this.setState({
-      stockTrades: arr
+      trades: arr
     });
   };
 
@@ -25,7 +28,7 @@ export default class StockTradeList extends Component {
       <table className='stockTradeList'>
         <tbody>
           {
-            this.state.stockTrades.map((item, i) => {
+            this.state.trades.map((item, i) => {
               return (
                 <StockTrade key={i} index={i} type={item.type} date={item.date} symbol={item.symbol} volume={item.volume} price={item.price} deleteTradeFunc={this.removeTrade.bind(this)}/>
               )

@@ -8,7 +8,7 @@ module.exports = {
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8000',
     'webpack/hot/only-dev-server',
-    './client/index',
+    './client/components/index',
   ],
   target: 'web',
   module: {
@@ -24,7 +24,9 @@ module.exports = {
     },
     {
       test: /\.css$/,
-      include: path.resolve('./client'),
+      include: [
+        path.resolve('./client')
+      ],
       use: [
         { loader: 'css-hot-loader' },
         { loader: 'style-loader' },
