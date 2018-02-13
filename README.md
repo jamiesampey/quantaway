@@ -1,1 +1,3 @@
-QuantAway
+Work in Progress... 
+
+QuantAway will be a quantitative analysis and back-testing tool. Code is ES 6 Javascript implemented in the [MERN](http://mern.io/) stack.  
