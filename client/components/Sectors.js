@@ -1,24 +1,33 @@
 import React from 'react';
-import { Grid, Row, Col } from 'react-bootstrap';
+import { PanelGroup, Panel } from 'react-bootstrap';
 import Sector from './Sector';
 
-const Sectors = () => (
-  <div>
-    <h2>Companies by Sector</h2>
-    <Grid>
-      <Row className="show-grid">
-        <Col>
-          <Sector name='energy'/>
-        </Col>
-        <Col>
-          <Sector name='financial'/>
-        </Col>
-        <Col>
-          <Sector name='healthcare'/>
-        </Col>
-      </Row>
-    </Grid>
-  </div>
-);
+class Sectors extends React.Component {
+
+  render() {
+    return (
+      <PanelGroup accordion id="accordion-controlled-example">
+        <Panel eventKey='1'>
+          <Panel.Heading>
+            <Panel.Title toggle>Energy</Panel.Title>
+          </Panel.Heading>
+          <Panel.Body collapsible><Sector name='energy'/></Panel.Body>
+        </Panel>
+        <Panel eventKey='2'>
+          <Panel.Heading>
+            <Panel.Title toggle>Healthcare</Panel.Title>
+          </Panel.Heading>
+          <Panel.Body collapsible><Sector name='healthcare'/></Panel.Body>
+        </Panel>
+        <Panel eventKey='3'>
+          <Panel.Heading>
+            <Panel.Title toggle>Financial</Panel.Title>
+          </Panel.Heading>
+          <Panel.Body collapsible><Sector name='financial'/></Panel.Body>
+        </Panel>
+      </PanelGroup>
+    )
+  }
+}
 
 export default Sectors

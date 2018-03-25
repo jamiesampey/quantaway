@@ -1,4 +1,4 @@
-import '../public/bootstrap-slate.css';
+import '../public/css/bootstrap-slate.css';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

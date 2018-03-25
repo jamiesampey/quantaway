@@ -4,12 +4,10 @@ import Sectors from './Sectors';
 import Company from './Company';
 
 const Companies = () => (
-  <div>
-    <Switch>
-      <Route path='/companies/:symbol' component={Company}></Route>
-      <Route path='/' component={Sectors}></Route>
-    </Switch>
-  </div>
+  <Switch>
+    <Route path='/companies/:symbol' component={Company} />
+    <Route path='/' component={Sectors} />
+  </Switch>
 );
 
 export default Companies

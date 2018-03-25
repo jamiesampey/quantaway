@@ -22,11 +22,6 @@ export default class Sector extends React.Component {
   render() {
     return (
       <Table>
-        <thead>
-          <tr>
-            <th>{this.props.name}</th>
-          </tr>
-        </thead>
         <tbody>
           <Table striped hover>
             <thead>
