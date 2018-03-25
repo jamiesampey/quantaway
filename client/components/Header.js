@@ -1,25 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
 const Header = () => (
   <header>
     <Navbar fluid>
       <Navbar.Header>
-        <Navbar.Brand>
-          <Link to='/'>QuantAway</Link>
-        </Navbar.Brand>
+        <LinkContainer to='/'>
+          <Navbar.Brand>QuantAway</Navbar.Brand>
+        </LinkContainer>
       </Navbar.Header>
       <Nav>
-        <NavItem eventKey={1}>
-          <Link to='/positions'>Positions</Link>
-        </NavItem>
-        <NavItem eventKey={2}>
-          <Link to='/backtest'>Back Test</Link>
-        </NavItem>
-        <NavItem eventKey={3}>
-          <Link to='/companies'>Companies</Link>
-        </NavItem>
+        <LinkContainer to='/positions'>
+          <NavItem eventKey={1}>Positions</NavItem>
+        </LinkContainer>
+        <LinkContainer to='/backtest'>
+          <NavItem eventKey={2}>Back Test</NavItem>
+        </LinkContainer>
+        <LinkContainer to='/companies'>
+          <NavItem eventKey={3}>Companies</NavItem>
+        </LinkContainer>
       </Nav>
     </Navbar>
   </header>
