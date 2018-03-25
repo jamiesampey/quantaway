@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Sectors from './Sectors';
+import Sectors from './SectorsPanelGroup';
 import Company from './Company';
 
 const Companies = () => (
