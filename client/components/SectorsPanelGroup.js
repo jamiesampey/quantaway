@@ -1,6 +1,6 @@
 import React from 'react';
 import { PanelGroup } from 'react-bootstrap';
-import Sector from './SectorPanel';
+import SectorPanel from './SectorPanel';
 
 class SectorsPanelGroup extends React.Component {
 
@@ -16,7 +16,7 @@ class SectorsPanelGroup extends React.Component {
         {
           this.state.sectorNames.map((sectorName, i) => {
             return (
-              <Sector name={sectorName} key={i}/>
+              <SectorPanel name={sectorName} key={i}/>
             )
           })
         }

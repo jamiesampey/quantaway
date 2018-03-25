@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Sectors from './SectorsPanelGroup';
+import SectorsPanelGroup from './SectorsPanelGroup';
 import Company from './Company';
 
 const Companies = () => (
   <Switch>
     <Route path='/companies/:symbol' component={Company} />
-    <Route path='/' component={Sectors} />
+    <Route path='/' component={SectorsPanelGroup} />
   </Switch>
 );
 
