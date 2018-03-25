@@ -7,13 +7,13 @@ export default class SectorPanel extends React.Component {
 
   componentWillMount() {
     this.setState({
-      sectorDisplayName: `${this.props.name.charAt(0).toUpperCase()}${this.props.name.slice(1)}`,
+      sectorDisplayName: `${this.props.sectorName.charAt(0).toUpperCase()}${this.props.sectorName.slice(1)}`,
       companies: []
     });
   }
 
   componentDidMount() {
-    fetch(`/companies/${this.props.name}`)
+    fetch(`/companies/${this.props.sectorName}`)
       .then(res => res.json())
       .then(data => {
         this.setState({companies: data});

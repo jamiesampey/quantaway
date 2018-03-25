@@ -12,11 +12,11 @@ class SectorsPanelGroup extends React.Component {
 
   render() {
     return (
-      <PanelGroup accordion id="accordion-controlled-example">
+      <PanelGroup accordion id='sectors-panel-group'>
         {
           this.state.sectorNames.map((sectorName, i) => {
             return (
-              <SectorPanel name={sectorName} key={i}/>
+              <SectorPanel sectorName={sectorName} key={i}/>
             )
           })
         }
