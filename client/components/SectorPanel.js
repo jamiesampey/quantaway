@@ -9,9 +9,7 @@ export default class SectorPanel extends React.Component {
     this.setState({
       companies: []
     });
-  }
 
-  componentDidMount() {
     fetch(`/companies/${this.props.sectorName}`)
       .then(res => res.json())
       .then(data => {
@@ -19,12 +17,30 @@ export default class SectorPanel extends React.Component {
       });
   }
 
+  colorizedPerfStat(stat) {
+    if (stat) {
+      let statColor = parseInt(stat.replace('%', '')) >= 0 ? 'green' : 'red';
+      return (<span style={{color: statColor}}>{stat}</span>);
+    } else {
+      return "";
+    }
+  }
+
   render() {
     return (
       <Panel eventKey={this.props.eventKey}>
-        <Panel.Heading>
+        <Panel.Heading style={{padding: '0 15px 0 15px'}}>
           <Panel.Title toggle>
-            {`${this.props.sectorDisplayName} 5-day: ${this.props.fiveDayPerf} 3-month: ${this.props.threeMonthPerf} 1-year: ${this.props.oneYearPerf}`}
+            <Table style={{background: 'transparent', margin: '0'}}>
+              <thead>
+                <tr>
+                  <td style={{width: '300px'}}>{this.props.sectorDisplayName}</td>
+                  <td style={{width: '150px', float: 'left', whiteSpace: 'nowrap'}}>5-day: {this.colorizedPerfStat(this.props.fiveDayPerf)}</td>
+                  <td style={{width: '150px', float: 'left', whiteSpace: 'nowrap'}}>3-month: {this.colorizedPerfStat(this.props.threeMonthPerf)}</td>
+                  <td style={{width: '150px', float: 'left', whiteSpace: 'nowrap'}}>1-year: {this.colorizedPerfStat(this.props.oneYearPerf)}</td>
+                </tr>
+              </thead>
+            </Table>
           </Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible style={{paddingTop: 0, paddingBottom: 0, paddingRight: 0}}>
