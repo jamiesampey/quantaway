@@ -7,7 +7,6 @@ export default class SectorPanel extends React.Component {
 
   componentWillMount() {
     this.setState({
-      sectorDisplayName: `${this.props.sectorName.charAt(0).toUpperCase()}${this.props.sectorName.slice(1)}`,
       companies: []
     });
   }
@@ -24,7 +23,9 @@ export default class SectorPanel extends React.Component {
     return (
       <Panel eventKey={this.props.key}>
         <Panel.Heading>
-          <Panel.Title toggle>{this.state.sectorDisplayName}</Panel.Title>
+          <Panel.Title toggle>
+            {`${this.props.sectorDisplayName} -- 5-day: ${this.props.fiveDayPerf}, 3-month: ${this.props.threeMonthPerf}, 1-year: ${this.props.oneYearPerf}`}
+          </Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible style={{paddingTop: 0, paddingBottom: 0, paddingRight: 0}}>
           <Table striped hover style={{margin: 0}}>
