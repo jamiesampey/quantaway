@@ -2,11 +2,37 @@ import React from 'react';
 import { PanelGroup } from 'react-bootstrap';
 import SectorPanel from './SectorPanel';
 
+import { SectorNames } from '../../common/Constants';
+
 class SectorsPanelGroup extends React.Component {
 
-  constructor() {
-    super();
-    this.sectorNames = ['energy', 'health-care', 'financials'];
+  componentWillMount() {
+    let initSectorPerfArrays = {};
+    SectorNames.forEach((sectorName) => {
+      initSectorPerfArrays[sectorName] = [];
+    });
+
+    this.setState({
+      sectorPerfStats: initSectorPerfArrays,
+    });
+  }
+
+  componentDidMount() {
+    fetch('/companies/sectors')
+      .then(res => res.json())
+      .then(data => {
+        let updatedSectorPerfStats = this.state.sectorPerfStats;
+
+        for (var prop in data) {
+          SectorNames.forEach((sectorName) => {
+            updatedSectorPerfStats[sectorName].push(data[prop][this.sectorDisplayName(sectorName)]);
+          });
+        }
+
+        this.setState({
+          sectorPerfStats: updatedSectorPerfStats
+        });
+      });
   }
 
   sectorDisplayName(sectorName) {
@@ -15,47 +41,15 @@ class SectorsPanelGroup extends React.Component {
     }).join(' ');
   }
 
-  componentWillMount() {
-    let initSectorPerfArrays = {};
-    this.sectorNames.forEach((sectorName) => {
-      initSectorPerfArrays[sectorName] = [];
-    });
-
-    this.setState({
-      sectorPerfStats: initSectorPerfArrays
-    });
-  }
-
-  componentDidMount() {
-    fetch('/companies/sectors')
-      .then(res => res.json())
-      .then(data => {
-        // console.info(`raw sectors response is: ${JSON.stringify(data)}`);
-        let updatedSectorPerfStats = this.state.sectorPerfStats;
-
-        for (var prop in data) {
-          this.sectorNames.forEach((sectorName) => {
-            console.info(`pushing perf stat data[${prop}][${this.sectorDisplayName(sectorName)}] = ${data[prop][this.sectorDisplayName(sectorName)]}`);
-            updatedSectorPerfStats[sectorName].push(data[prop][this.sectorDisplayName(sectorName)]);
-          });
-        }
-
-        console.info(`updating state with perf stats: \n${JSON.stringify(updatedSectorPerfStats)}`);
-
-        this.setState({
-          sectorPerfStats: updatedSectorPerfStats
-        });
-      });
-  }
-
   render() {
     return (
-      <PanelGroup accordion id='sectors-panel-group'>
+      <PanelGroup accordion id='sectors-panel-group' defaultActiveKey='0'>
         {
-          this.sectorNames.map((sectorName, i) => {
+          SectorNames.map((sectorName, i) => {
             return (
               <SectorPanel
                 key={i}
+                eventKey={i.toString()}
                 sectorName={sectorName}
                 sectorDisplayName={this.sectorDisplayName(sectorName)}
                 fiveDayPerf={this.state.sectorPerfStats[sectorName][0]}

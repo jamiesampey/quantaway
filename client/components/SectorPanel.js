@@ -21,10 +21,10 @@ export default class SectorPanel extends React.Component {
 
   render() {
     return (
-      <Panel eventKey={this.props.key}>
+      <Panel eventKey={this.props.eventKey}>
         <Panel.Heading>
           <Panel.Title toggle>
-            {`${this.props.sectorDisplayName} -- 5-day: ${this.props.fiveDayPerf}, 3-month: ${this.props.threeMonthPerf}, 1-year: ${this.props.oneYearPerf}`}
+            {`${this.props.sectorDisplayName} 5-day: ${this.props.fiveDayPerf} 3-month: ${this.props.threeMonthPerf} 1-year: ${this.props.oneYearPerf}`}
           </Panel.Title>
         </Panel.Heading>
         <Panel.Body collapsible style={{paddingTop: 0, paddingBottom: 0, paddingRight: 0}}>
@@ -35,7 +35,8 @@ export default class SectorPanel extends React.Component {
                 return (
                   <tr key={i}>
                     <td><Link to={`/companies/${co.symbol}`}>{co.symbol}</Link></td>
-                    <td style={{width: '99%'}}>{co.name}</td>
+                    <td style={{whiteSpace: 'nowrap'}}><Link to={`/companies/${co.symbol}`}>{co.company}</Link></td>
+                    <td style={{whiteSpace: 'nowrap', width: '99%'}}>{co.industry}</td>
                   </tr>
                 );
               })

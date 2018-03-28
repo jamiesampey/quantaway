@@ -10,7 +10,6 @@ import { AVSectorPerfRanks } from '../../common/Constants';
 const companiesRouter = express.Router();
 
 companiesRouter.get('/sectors', function(req, res) {
-  console.info(`using AV config key ${Config.AlphaVantageKey}`);
   axios.get(`https://www.alphavantage.co/query?function=SECTOR&apikey=${Config.AlphaVantageKey}`)
     .then(function (avRes) {
       let responseObj = {};
@@ -40,8 +39,9 @@ const companyCsvToJson = (sectorName, res) => {
     .pipe(csv.parse({headers: true}))
     .transform(function(row) {
       return {
-        symbol: row['symbol'],
-        name: row['name']
+        symbol: row['Symbol'],
+        company: row['Company'],
+        industry: row['Industry'],
       };
     }).on("readable", function () {
       var row;
