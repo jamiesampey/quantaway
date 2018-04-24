@@ -4,13 +4,26 @@ import fs from 'fs';
 import csv from 'fast-csv';
 import axios from 'axios';
 
-import Config from '../resources/config';
+import Config from '../config';
 import { AVSectorPerfRanks } from '../../common/Constants';
 
 const companiesRouter = express.Router();
 
+companiesRouter.get('/:symbol/perf', function(req, res) {
+  axios.get(Config.timeSeriesDailyUrl(req.params.symbol))
+    .then(function (avRes) {
+      let responseObj = {};
+      let avRespData = avRes.data;
+      console.log(`Got response data: ${avRespData}`);
+      res.json(avRespData);
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+});
+
 companiesRouter.get('/sectors', function(req, res) {
-  axios.get(`https://www.alphavantage.co/query?function=SECTOR&apikey=${Config.AlphaVantageKey}`)
+  axios.get(`${Config.sectorUrl}`)
     .then(function (avRes) {
       let responseObj = {};
       let avRespData = avRes.data;

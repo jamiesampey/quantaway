@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static('client/public'));
 
-app.use('/companies', companies);
+app.use('/api/companies', companies);
 
 app.get('*', (req, res) => {
   res.sendFile(path.resolve('client/public/index.html'));

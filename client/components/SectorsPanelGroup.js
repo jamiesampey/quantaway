@@ -18,7 +18,7 @@ class SectorsPanelGroup extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/companies/sectors')
+    fetch('/api/companies/sectors')
       .then(res => res.json())
       .then(data => {
         let updatedSectorPerfStats = this.state.sectorPerfStats;

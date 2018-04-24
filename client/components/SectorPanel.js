@@ -10,7 +10,7 @@ export default class SectorPanel extends React.Component {
       companies: []
     });
 
-    fetch(`/companies/${this.props.sectorName}`)
+    fetch(`/api/companies/${this.props.sectorName}`)
       .then(res => res.json())
       .then(data => {
         this.setState({companies: data});

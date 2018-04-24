@@ -4,7 +4,7 @@ let Config = {
 
   avQueryUrl: (queryFunc, symbol) => {
     let funcUrl = `https://www.alphavantage.co/query?function=${queryFunc}&apikey=${Props.AlphaVantage.ApiKey}`;
-    if (symbol) funcUrl.append(`&symbol=${symbol}`);
+    if (symbol) funcUrl += `&symbol=${symbol}`;
     return funcUrl;
   },
 
@@ -12,7 +12,9 @@ let Config = {
     return this.avQueryUrl('SECTOR');
   },
 
-  timeSeriesDailyUrl: (symbol) => this.avQueryUrl('TIME_SERIES_DAILY', symbol),
+  timeSeriesDailyUrl(symbol) {
+    return this.avQueryUrl('TIME_SERIES_DAILY', symbol)
+  },
 };
 
 export default Config
