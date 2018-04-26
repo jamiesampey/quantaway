@@ -11,8 +11,8 @@ const Header = () => (
         </LinkContainer>
       </Navbar.Header>
       <Nav>
-        <LinkContainer to='/positions'>
-          <NavItem eventKey={1}>Positions</NavItem>
+        <LinkContainer to='/strategies'>
+          <NavItem eventKey={1}>Strategies</NavItem>
         </LinkContainer>
         <LinkContainer to='/backtest'>
           <NavItem eventKey={2}>Back Test</NavItem>

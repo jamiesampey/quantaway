@@ -5,7 +5,6 @@ export default class Company extends React.Component {
 
   componentWillMount() {
     this.symbol = this.props.match.params.symbol;
-    console.log(`set this.symbol to ${this.symbol}`);
   }
 
   componentDidMount() {

@@ -12,7 +12,6 @@ const companiesRouter = express.Router();
 companiesRouter.get('/:symbol/perf', function(req, res) {
   axios.get(Config.timeSeriesDailyUrl(req.params.symbol))
     .then(function (avRes) {
-      let responseObj = {};
       let avRespData = avRes.data;
       console.log(`Got response data: ${avRespData}`);
       res.json(avRespData);
