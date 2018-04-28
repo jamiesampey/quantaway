@@ -1,12 +1,12 @@
 import React from 'react';
+import {Route, Switch} from 'react-router-dom';
 import StrategiesPanelGroup from './StrategiesPanelGroup';
 import Strategy from './Strategy';
-import {Route, Switch} from 'react-router';
 
 const Strategies = () => (
   <Switch>
-    <Route path='/strategies/:stratName' component={Strategy}/>
-    <Route path='/' component={StrategiesPanelGroup}/>
+    <Route path='/strategies/:name' component={Strategy} />
+    <Route path='/' component={StrategiesPanelGroup} />
   </Switch>
 );
 
