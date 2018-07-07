@@ -3,7 +3,7 @@ import { Table, Panel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
-export default class SectorPanel extends React.Component {
+export default class Sector extends React.Component {
 
   componentWillMount() {
     this.setState({

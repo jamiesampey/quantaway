@@ -1,10 +1,10 @@
 import React from 'react';
 import { PanelGroup } from 'react-bootstrap';
-import SectorPanel from './SectorPanel';
+import Sector from './Sector';
 
 import { SectorNames } from '../../common/Constants';
 
-class SectorsPanelGroup extends React.Component {
+class Sectors extends React.Component {
 
   componentWillMount() {
     let initSectorPerfArrays = {};
@@ -47,7 +47,7 @@ class SectorsPanelGroup extends React.Component {
         {
           SectorNames.map((sectorName, i) => {
             return (
-              <SectorPanel
+              <Sector
                 key={i}
                 eventKey={i.toString()}
                 sectorName={sectorName}
@@ -64,4 +64,4 @@ class SectorsPanelGroup extends React.Component {
   }
 }
 
-export default SectorsPanelGroup
+export default Sectors

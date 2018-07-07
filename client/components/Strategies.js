@@ -1,14 +1,13 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import StrategiesPanelGroup from './StrategiesPanelGroup';
-import Strategy from './Strategy';
+import { Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
-const Strategies = () => (
-  <Switch>
-    <Route path='/strategies/:name' component={Strategy} />
-    <Route path='/' component={StrategiesPanelGroup} />
-  </Switch>
-);
-
-export default Strategies
-
+export default class Strategies extends React.Component {
+  render() {
+    return (
+      <LinkContainer to='/strategies/new'>
+        <Button bsStyle='primary'>New Strategy</Button>
+      </LinkContainer>
+    )
+  }
+}

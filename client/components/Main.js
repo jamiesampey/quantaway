@@ -1,15 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Companies from './Companies';
+import CompaniesRoute from './CompaniesRoute';
 import BackTest from './BackTest';
-import Strategies from './Strategies';
+import StrategiesRoute from './StrategiesRoute';
 
 const Main = () => (
   <main>
     <Switch>
-      <Route path='/strategies' component={Strategies}/>
+      <Route path='/strategies' component={StrategiesRoute}/>
       <Route path='/backtest' component={BackTest}/>
-      <Route path='/companies' component={Companies}/>
+      <Route path='/companies' component={CompaniesRoute}/>
     </Switch>
   </main>
 );
