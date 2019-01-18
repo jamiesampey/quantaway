@@ -18,7 +18,16 @@ class Sectors extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/companies/sectors')
+    fetch('/api/sectors')
+      .then(response => {
+        if (response.status !== 200) {
+          return response
+        } else {
+          var error = new Error(response.statusText)
+          error.response = response
+          throw error
+        }
+      })
       .then(res => res.json())
       .then(data => {
         let updatedSectorPerfStats = this.state.sectorPerfStats;

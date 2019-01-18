@@ -8,11 +8,11 @@ export default class Company extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`/api/companies/${this.symbol}/perf`)
-      .then(res => res.json())
-      .then(data => {
-        console.info(`got company data: ${JSON.stringify(data)}`);
-      });
+    // fetch(`/api/companies/${this.symbol}/perf`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.info(`got company data: ${JSON.stringify(data)}`);
+    //   });
   }
 
   render() {
